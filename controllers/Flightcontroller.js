@@ -1,4 +1,3 @@
-const { data } = require("@tensorflow/tfjs-node");
 const Flight = require("./../models/Flightmodel");
 
 //getting all  the flights
