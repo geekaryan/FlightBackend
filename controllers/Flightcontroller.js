@@ -6,7 +6,8 @@ exports.getFlight = async (req, res) => {
     const flights = await Flight.find();
     res.status(201).json({
       status: "success",
-      length: flights.length(),
+      length: flights.length,
+      // length: flights.length(),
       data: {
         flights,
       },

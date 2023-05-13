@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const flightSchema = new mongoose.model({
+const flightSchema = new mongoose.Schema({
   source: {
     type: String,
     require: [true, "source must be present"],
@@ -14,12 +14,12 @@ const flightSchema = new mongoose.model({
     require: [true, "price must be present so that you have to pay"],
   },
   flights: {
-    type: String,
+    type: [String],
     require: [true, "Flights name must be there."],
   },
-  Date: {
+  date: {
     type: Date,
-    required: [true, "Date must be there"],
+    // required: [true, "Date must be there"],
   },
 });
 
