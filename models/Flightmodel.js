@@ -25,4 +25,6 @@ const flightSchema = new mongoose.Schema({
 
 const Flight = mongoose.model("Flight", flightSchema);
 
+//--> going to add filter and other functions
+
 module.exports = Flight;
