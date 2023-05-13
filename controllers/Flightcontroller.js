@@ -84,3 +84,22 @@ exports.updateFlight = async (req, res) => {
     });
   }
 };
+
+//delete the flight
+exports.deleteFlight = async (req, res) => {
+  try {
+    const deleteFlight = await Flight.findByIdAndDelete(
+      req.params.id,
+      req.body
+    );
+    res.status(200).json({
+      status: "success",
+      data: null,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
