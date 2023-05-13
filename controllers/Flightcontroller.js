@@ -57,3 +57,30 @@ exports.createFlight = async (req, res) => {
     });
   }
 };
+
+//update the flight
+
+exports.updateFlight = async (req, res) => {
+  try {
+    const flightUpdate = await Flight.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        flightUpdate,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
