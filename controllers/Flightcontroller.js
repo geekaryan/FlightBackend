@@ -1,3 +1,4 @@
+const { json } = require("express");
 const Flight = require("./../models/Flightmodel");
 
 //getting all  the flights
@@ -12,7 +13,14 @@ exports.getFlight = async (req, res) => {
     // const flights = await Flight.find({
     //   date: 2023 - 01 - 23,
     // });
-    const query = Flight.find(queryObj);
+
+    //greater and less than filtering(advanced filtering)
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    // console.log(JSON.parse(queryStr));
+
+    //gte,gt,lte,lt
+    const query = Flight.find(JSON.parse(queryStr));
     const flights = await query;
     res.status(200).json({
       status: "success",
