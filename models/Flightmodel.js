@@ -19,7 +19,7 @@ const flightSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    // required: [true, "Date must be there"],
+    required: [true, "Date must be there"],
   },
 });
 
