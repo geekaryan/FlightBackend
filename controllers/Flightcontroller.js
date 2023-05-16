@@ -3,11 +3,16 @@ const Flight = require("./../models/Flightmodel");
 //getting all  the flights
 exports.getFlight = async (req, res) => {
   try {
-    console.log(req.query);
+    const queryObj = { ...req.query };
+    const excludeFileds = ["page", "sort", "limit", "fields"];
+
+    excludeFileds.forEach((el) => delete queryObj[el]);
+
+    // console.log(req.query, queryObj);
     // const flights = await Flight.find({
     //   date: 2023 - 01 - 23,
     // });
-    const flights = await Flight.find(req.query);
+    const flights = await Flight.find(queryObj);
     res.status(200).json({
       status: "success",
       length: flights.length,
