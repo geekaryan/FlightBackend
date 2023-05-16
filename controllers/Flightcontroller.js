@@ -12,7 +12,8 @@ exports.getFlight = async (req, res) => {
     // const flights = await Flight.find({
     //   date: 2023 - 01 - 23,
     // });
-    const flights = await Flight.find(queryObj);
+    const query = Flight.find(queryObj);
+    const flights = await query;
     res.status(200).json({
       status: "success",
       length: flights.length,
