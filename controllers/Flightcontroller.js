@@ -4,7 +4,7 @@ const Flight = require("./../models/Flightmodel");
 exports.getFlight = async (req, res) => {
   try {
     const flights = await Flight.find();
-    res.status(201).json({
+    res.status(200).json({
       status: "success",
       length: flights.length,
       // length: flights.length(),
@@ -44,7 +44,7 @@ exports.findByOne = async (req, res) => {
 exports.createFlight = async (req, res) => {
   try {
     const flight = await Flight.create(req.body);
-    res.status(201).json({
+    res.status(200).json({
       status: "success",
       data: {
         flight,
