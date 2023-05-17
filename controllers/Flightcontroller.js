@@ -20,7 +20,12 @@ exports.getFlight = async (req, res) => {
     // console.log(JSON.parse(queryStr));
 
     //gte,gt,lte,lt
-    const query = Flight.find(JSON.parse(queryStr));
+    let query = Flight.find(JSON.parse(queryStr));
+
+    //adding the sort techinque to sort according to prices of the tickets..
+    if (req.query.sort) {
+      query = query.sort(req.query.sort);
+    }
     const flights = await query;
     res.status(200).json({
       status: "success",
