@@ -24,7 +24,13 @@ exports.getFlight = async (req, res) => {
 
     //adding the sort techinque to sort according to prices of the tickets..
     if (req.query.sort) {
-      query = query.sort(req.query.sort);
+      const sortBy = req.query.sort.split(",").join(" ");
+      //sort by split and then join
+      console.log(sortBy);
+      query = query.sort(sortBy);
+      //sort('price and anyother criteria...r')
+    } else {
+      query = query.sort("-createdAt");
     }
     const flights = await query;
     res.status(200).json({
