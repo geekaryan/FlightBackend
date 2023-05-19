@@ -38,7 +38,7 @@ exports.getFlight = async (req, res) => {
       const fields = req.query.fields.split(",").join(" ");
       query = query.select(fields);
     } else {
-      query = query.select("");
+      query = query.select("-__v");
     }
     const flights = await query;
     res.status(200).json({

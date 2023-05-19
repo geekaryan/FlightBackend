@@ -21,6 +21,11 @@ const flightSchema = new mongoose.Schema({
     type: Date,
     required: [true, "Date must be there"],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    select: false,
+  },
 });
 
 const Flight = mongoose.model("Flight", flightSchema);
