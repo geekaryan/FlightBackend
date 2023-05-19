@@ -32,6 +32,14 @@ exports.getFlight = async (req, res) => {
     } else {
       query = query.sort("-createdAt");
     }
+
+    //filed limiting
+    if (req.query.fields) {
+      const fields = req.query.fields.split(",").join(" ");
+      query = query.select(fields);
+    } else {
+      query = query.select("");
+    }
     const flights = await query;
     res.status(200).json({
       status: "success",
